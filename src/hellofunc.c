@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <hellomake.h>
+#include <../include/hellomake.h>
 #include <stdbool.h>
 
 bool ExampleFunction(void) {
