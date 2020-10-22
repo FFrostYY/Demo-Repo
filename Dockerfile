@@ -1,4 +1,4 @@
-FROM ee88ef03bbc7 AS build
+FROM cpp AS build
 
 WORKDIR project/
 
