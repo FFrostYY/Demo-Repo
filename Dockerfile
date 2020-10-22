@@ -1,4 +1,4 @@
-FROM 1a07a6d61b45 AS build
+FROM ee88ef03bbc7 AS build
 
 WORKDIR project/
 
