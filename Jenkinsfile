@@ -4,8 +4,12 @@ pipeline {
 		stage('build') {
 			steps {
 				sh 'docker --version'
-				withDockerRegistry([credentialsId: "docker-hub-credentials", url: ""]) {
-					sh 'docker run --publish 8000:8090 --detach --privileged --name stribog10/demo-docker'
+				    withCredentials([usernamePassword( credentialsId: 'docker-hub-credentials', usernameVariable: 'USER', passwordVariable: 'PASSWORD')]) {
+        def registry_url = "registry.hub.docker.com/"
+        sh "docker login -u $USER -p $PASSWORD ${registry_url}"
+        docker.withRegistry("http://${registry_url}", "docker-hub-credentials") {
+						sh 'docker run --publish 8000:8090 --detach --privileged --name stribog10/demo-docker'
+				        }
 				}
 			}
 		}
